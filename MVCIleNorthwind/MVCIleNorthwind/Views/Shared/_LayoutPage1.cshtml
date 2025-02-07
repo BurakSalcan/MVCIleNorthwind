@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assets/css/BasicLayout.css" rel="stylesheet" />
+    @RenderSection("Stiller",false)
+</head>
+<body>
+    <div class="solMenu">
+        @Html.ActionLink("Anasayfa", "Index", "Home", null)
+        <a href="@Url.Action("Index", "Kategori")">Kategori Listesi</a>
+        <a href="@Url.Action("Ekle", "Kategori")">Kategori Ekle</a>
+    </div>
+    <div class="anaIcerik"></div>
+    <div>
+        @RenderBody()
+    </div>
+    <div style="clear:both"></div>
+</body>
+</html>
