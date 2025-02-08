@@ -10,11 +10,10 @@
 <h2>Ekle</h2>
 <hr />
 <div class="formtasiyici">
-
     @if (ViewBag.basarili != null)
     {
         <div class="basarili">
-            <label>Ekleme işlemi başarılı</label>
+            <label>@ViewBag.basarili</label>
         </div>
     }
     @if (ViewBag.basarisiz != null)
@@ -23,6 +22,7 @@
             <label>@ViewBag.basarisiz</label>
         </div>
     }
+
     @using (Html.BeginForm())
     {
         <div class="satir">
@@ -30,16 +30,13 @@
             @Html.EditorFor(x => x.CategoryName, new { htmlAttributes = new { @class = "metinKutu" } })
         </div>
         <div class="satir">
-            <label>Açıklama</label><br />
+            <label>Açılama</label><br />
             @Html.EditorFor(x => x.Description, new { htmlAttributes = new { @class = "metinKutu" } })
         </div>
         <div class="satir">
             <input type="submit" value="Ekle" class="eklebutton" />
         </div>
-        <div>
-
-
-        </div>
     }
 </div>
+
 

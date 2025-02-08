@@ -19,11 +19,9 @@ namespace MVCIleNorthwind.Controllers
         [HttpGet]
         public ActionResult Ekle()
         {
-            return View();  
+            return View();
         }
-        
         [HttpPost]
-        
         public ActionResult Ekle(Categories c)
         {
             try
@@ -32,21 +30,20 @@ namespace MVCIleNorthwind.Controllers
                 {
                     db.Categories.Add(c);
                     db.SaveChanges();
-                    ViewBag.basarili = "Kategori Başarıyla Eklendi.";
+                    ViewBag.basarili = "Kategori Ekleme Başarılı";
                 }
                 else
                 {
-                    ViewBag.basarisiz = "Kategori Adı Boş Olamaz.";
+                    ViewBag.basarisiz = "Kategori Adı boş olamaz";
                 }
             }
             catch
             {
-                ViewBag.basarisiz = "Ekleme İşlemi Başarısız.";
+                ViewBag.basarisiz = "Ekleme İşlemi Başarısız";
             }
             return View();
         }
         [HttpGet]
-
         public ActionResult Duzenle(int? id)
         {
             if (id != null)
@@ -65,6 +62,36 @@ namespace MVCIleNorthwind.Controllers
             {
                 return RedirectToAction("Index", "Kategori");
             }
+        }
+
+        [HttpPost]
+        public ActionResult Duzenle(Categories model)
+        {
+            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+
+        }
+
+        public ActionResult Sil(int? id)
+        {
+            if(id != null)
+            {
+                Categories c = db.Categories.Find(id);
+                if (c != null)
+                {
+                    if (c.Products.Count == 0)
+                    {
+                        db.Categories.Remove(c);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        TempData["mesaj"] = $"Bu kategori {c.Products.Count} adet üründe kullanıldığı için silinemez!";
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Kategori");
         }
     }
 }

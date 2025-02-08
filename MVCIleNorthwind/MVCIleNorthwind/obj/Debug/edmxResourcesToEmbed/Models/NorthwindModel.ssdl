@@ -5,7 +5,7 @@
       <PropertyRef Name="CategoryID" />
     </Key>
     <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CategoryName" Type="nvarchar" MaxLength="150" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="Description" Type="ntext" />
     <Property Name="Picture" Type="image" />
   </EntityType>
@@ -62,8 +62,8 @@
     <Property Name="Notes" Type="ntext" />
     <Property Name="ReportsTo" Type="int" />
     <Property Name="PhotoPath" Type="nvarchar" MaxLength="255" />
-    <Property Name="UserName" Type="nchar" MaxLength="50" />
-    <Property Name="Password" Type="nchar" MaxLength="20" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="EmployeeTerritories">
     <Key>
